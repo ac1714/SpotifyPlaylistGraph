@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- JQUERY JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="underscore.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="spotifyFunctions.js"></script>
+	<!-- MAIN CSS -->
+	<link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+</head>
+<body>
+
+<div id="search_div">
+	<h3>Spotify Playlist Visualizer</h3>
+    <div id="submit_div">
+        <input id="playlist_input" type="text" name="playlistid">
+        <button onClick="drawGraph(createJSON(getPlaylist(playlist_input.value, accessToken, user.id)))">Draw graph</button>
+        <!-- <button onClick="scrollUp()">Draw graph</button> -->
+    </div>
+	<button id="signin" onclick="authorizeUser()">Sign in</button>
+</div>
+
+<div id="display_div">
+    <div id="selection_div"></div>
+	This will be the graph display div.
+    <div id="graph_div"></div>
+</div>
+
+<script>
+var accessToken = null;
+var user = null;
+
+function scrollUp() {
+    $('#search_div').animate({height:'10vh'}, 2000);
+}
+
+function drawGraph(json) {
+    $('#graph_div').html("");
+    scrollUp();
+    console.log(json);
+    var width = 1280,
+    height = 800
+    r = 6;
+
+    var color = d3.scale.category20();
+    
+    var k = Math.sqrt(json.nodes.length / (width * height));
+
+    var force = d3.layout.force()
+        .charge(-120)
+        .linkDistance(30)
+        .size([width, height]);
+
+    var svg = d3.select("#graph_div").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    graph = json;
+
+    force
+        .nodes(graph.nodes)
+        .links(graph.links)
+        .start();
+
+    var link = svg.selectAll(".link")
+        .data(graph.links)
+        .enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+    var node = svg.selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .call(force.drag)
+        .on("dblclick",function(d){
+            var win = window.open("http://google.com/search?q="+d.name)
+            win.focus()
+        });
+
+    node.append("circle")
+        .attr("r", 8)
+        .style("fill", function (d) {
+            return color(d.group);
+        })
+
+    node.append("text")
+        .attr("dx", 10)
+        .attr("dy", ".35em")
+        .text(function(d) { return d.name });
+
+      //node.append("title")
+          //.text(function(d) { return d.name; });
+
+    force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    d3.selectAll("circle").attr("cx", function (d) {
+        return d.x;
+    })
+        .attr("cy", function (d) {
+            return d.y;
+        });
+
+        d3.selectAll("text").attr("x", function (d) {
+            return d.x;
+        })
+            .attr("y", function (d) {
+            return d.y;
+        });
+      });
+}
+
+function parseQueryToken() {
+    var token = null;
+    if (window.location.hash) {
+        token = window.location.hash.substring(14, 265);
+    }
+    console.log(token);
+    if (token != null) { 
+        return token; 
+    }
+    else { return null; }
+}
+
+function initialise() {
+    $("#submit_div").hide()
+
+    accessToken = parseQueryToken();
+    if (accessToken != null) {
+        $("#submit_div").show();
+        user = getCurrentUser(accessToken);
+    }
+}
+
+$(document).ready(
+    function() {
+        initialise();
+    }
+);
+</script>
+
+</body>
+</html>
