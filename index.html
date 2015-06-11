@@ -133,6 +133,7 @@ function initialise() {
 
     accessToken = parseQueryToken();
     if (accessToken != null) {
+        $("#signin").hide();
         $("#submit_div").show();
         user = getCurrentUser(accessToken);
     }
