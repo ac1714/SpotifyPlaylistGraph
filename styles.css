@@ -1,15 +1,15 @@
 body
 {
-    position: fixed; 
-    overflow-y: scroll;
-    width: 100%;
-    margin: 0px;
+  position: fixed; 
+  overflow-y: scroll;
+  width: 100%;
+  margin: 0px;
 }
 
 #search_div {
 	height: 20vh;
-    background-color: #2EBD59;
-    border-bottom: solid #CBD3CD;
+  background-color: #2EBD59;
+  border-bottom: solid #CBD3CD;
 }
 
 #submit_div {
@@ -45,7 +45,15 @@ h3 {
 }
 
 #signin {
-  color: red;
+  position: absolute;
+  background-image:url(./img/sign_in.png);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 170px;
+  right: 45%;
 }
 
 .link {
