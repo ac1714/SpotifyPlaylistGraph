@@ -1,18 +1,18 @@
 function createJSON(playlist) {
     //console.log(playlist.tracks.items[0].track.name); // Prints mother
     //console.log(playlist.tracks.items);
-	var data = { 'nodes': [], 'links': [] };
+    var data = { 'nodes': [], 'links': [] };
     genre_set = [];
-	track_obj_set = [];
+    track_obj_set = [];
     artist_full_obj_set = [];
     index = 1;
 
     data.nodes.push({'name': 'unclassified', 'index': 0, 'group': 5});
 
     _.each(playlist.tracks.items, function(track) {
-    	var track_obj = track.track;
-    	var song_node = {'name': track_obj.name, 'index': index, 'group': 4};
-    	data.nodes.push(song_node);
+        var track_obj = track.track;
+        var song_node = {'name': track_obj.name, 'index': index, 'group': 4};
+        data.nodes.push(song_node);
         var song_index = index;
         index = index + 1;
 
@@ -67,29 +67,29 @@ function getFullArtist(href) {
 function getPlaylist(id, token, uid) {
     var playlist = null;
     //console.log(token);
-	$.ajax({
+    $.ajax({
         async: false,
         dataType: 'json',
-		url: 'https://api.spotify.com/v1/users/' + uid + '/playlists/' + id,
-		headers: {'Authorization': 'Bearer ' + token},
-		success: function(r) {
-			//alert('Playlist name: ' + r.name);
+        url: 'https://api.spotify.com/v1/users/' + uid + '/playlists/' + id,
+        headers: {'Authorization': 'Bearer ' + token},
+        success: function(r) {
+            //alert('Playlist name: ' + r.name);
             playlist = r;
-		},
-		error: function(r) {
-			alert(r.status);
-		}
-	});
+        },
+        error: function(r) {
+            alert(r.status);
+        }
+    });
     return playlist;
 }
 
 function authorizeUser() {
     var client_id = '051d0745d3b349e2a3566df3e9cbbb36';
-    var redirect_uri = 'http://ec2-52-64-37-241.ap-southeast-2.compute.amazonaws.com/PlaylistVis/index.html';
+    var redirect_uri = 'http://ec2-52-64-37-241.ap-southeast-2.compute.amazonaws.com/SpotifyPlaylistGraph/index.html';
     var scopes = 'playlist-read-private';
     
     var url = 'https://accounts.spotify.com/authorize?client_id=051d0745d3b349e2a3566df3e9cbbb36&response_type=token&scope=playlist-read-private';
-    window.location = url += '&redirect_uri=http://ec2-52-64-37-241.ap-southeast-2.compute.amazonaws.com/PlaylistVis/index.html';
+    window.location = url += '&redirect_uri=http://ec2-52-64-37-241.ap-southeast-2.compute.amazonaws.com/SpotifyPlaylistGraph/index.html';
 }
 
 function getCurrentUser(token) {
