@@ -14,10 +14,10 @@
 
 <div id="search_div">
 	<h3>Spotify Playlist Visualizer</h3>
-    <button id="signin" onclick="authorizeUser()"></button>
+    <button id="signin" onclick="authorizeUser()">SIGN IN</button>
     <div id="submit_div">
-        <input id="playlist_input" type="text" name="playlistid">
-        <button onClick="drawGraph(createJSON(getPlaylist(playlist_input.value, accessToken, user.id)))">Draw graph</button>
+        <input id="playlist_input" type="text" name="playlistid"><br><br>
+        <button id="drawgraph" onClick="drawGraph(createJSON(getPlaylist(playlist_input.value, accessToken, user.id)))">VIEW GRAPH</button>
         <!-- <button onClick="scrollUp()">Draw graph</button> -->
     </div>
 </div>

@@ -49,7 +49,7 @@ h3 {
   height: 20px;
 }
 
-#signin {
+/*#signin {
   position: absolute;
   background-image:url(./img/sign_in.png);
   background-color: transparent;
@@ -59,6 +59,43 @@ h3 {
   height: 40px;
   width: 170px;
   right: 45%;
+}*/
+
+#signin {
+  position: absolute;
+  background-color: #000000;
+  border-radius: 20px; /* CSS3 */
+  -moz-border-radius: 20px; /* Mozilla */
+  -webkit-border-radius: 20px; /* Webkit */
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 170px;
+  right: 45%;
+  color: #FFFFFF;
+  font-family: Arial;
+}
+
+#signin:hover {
+  background-color: #242424;
+}
+
+#drawgraph {
+  margin-left: 20px;
+  background-color: #000000;
+  border-radius: 20px; /* CSS3 */
+  -moz-border-radius: 20px; /* Mozilla */
+  -webkit-border-radius: 20px; /* Webkit */
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  height: 25px;
+  color: #FFFFFF;
+  font-family: Arial;
+}
+
+#drawgraph:hover {
+  background-color: #242424;
 }
 
 .link {
