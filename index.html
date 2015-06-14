@@ -24,7 +24,6 @@
 
 <div id="display_div">
     <div id="selection_div"></div>
-	This will be the graph display div.
     <div id="graph_div"></div>
 </div>
 
@@ -130,6 +129,7 @@ function parseQueryToken() {
 
 function initialise() {
     $("#submit_div").hide()
+    //$("#signin").hide();
 
     accessToken = parseQueryToken();
     if (accessToken != null) {
@@ -140,9 +140,9 @@ function initialise() {
 }
 
 $(document).ready(
-    function() {
-        initialise();
-    }
+   function() {
+       initialise();
+   }
 );
 </script>
 
