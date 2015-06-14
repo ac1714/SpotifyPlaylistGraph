@@ -5,7 +5,12 @@ body
   margin: 0px;
 }
 
+#spotifylogo {
+  position: absolute;
+}
+
 #search_div {
+  position: relative;
 	height: 20vh;
   background-color: #2EBD59;
   border-bottom: solid #CBD3CD;
