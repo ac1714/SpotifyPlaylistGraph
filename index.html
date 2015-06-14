@@ -79,8 +79,9 @@ function drawGraph(json) {
         .attr("class", "node")
         .call(force.drag)
         .on("dblclick",function(d){
-            var win = window.open("http://google.com/search?q="+d.name)
-            win.focus()
+            //var win = window.open("http://google.com/search?q="+d.name)
+            //win.focus()
+            document.getElementById('selection_div').innerHTML = d.name;
         });
 
     node.append("circle")

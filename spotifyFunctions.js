@@ -11,7 +11,7 @@ function createJSON(playlist) {
 
     _.each(playlist.tracks.items, function(track) {
         var track_obj = track.track;
-        var song_node = {'name': track_obj.name, 'index': index, 'group': 4};
+        var song_node = {'name': track_obj.name, 'id': track_obj.id, 'index': index, 'group': 4};
         data.nodes.push(song_node);
         var song_index = index;
         index = index + 1;
