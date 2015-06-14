@@ -1,7 +1,6 @@
 body
 {
   position: fixed; 
-  overflow-y: scroll;
   width: 100%;
   margin: 0px;
 }
@@ -96,6 +95,10 @@ h3 {
 
 #drawgraph:hover {
   background-color: #242424;
+}
+
+footer {
+  font-family: Arial;
 }
 
 .link {
