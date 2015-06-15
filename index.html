@@ -14,7 +14,6 @@
 
 <div id="search_div">
 	<h3>Spotify Playlist Graph</h3>
-    <img id="spotifylogo" src="img/spotifylogo.png">
     <button id="signin" onclick="authorizeUser()">SIGN IN</button>
     <div id="submit_div">
         <input id="playlist_input" type="text" name="playlistid">
@@ -22,6 +21,8 @@
         <!-- <button onClick="scrollUp()">Draw graph</button> -->
     </div>
 </div>
+
+<a href="https://www.spotify.com" target="_blank"><img id="spotifylogo" src="img/spotifylogo.png"></a>
 
 <div id="display_div">
     <div id="selection_div"></div>
@@ -39,6 +40,7 @@ var user = null;
 function scrollUp() {
     $('#search_div').animate({height:'10vh'}, 2000);
     $('#submit_div').animate({height:'5vh'}, 2000);
+    $('#spotifylogo').animate({bottom: '90vh'}, 2000);
 }
 
 function drawGraph(json) {
