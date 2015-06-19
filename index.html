@@ -43,6 +43,26 @@ function scrollUp() {
     $('#spotifylogo').animate({bottom: '90vh'}, 2000);
 }
 
+function display(d) {
+    if ('id' in d) {
+        var track = getTrack(d.id);
+        //document.getElementById('selection_div').innerHTML = trackName;
+        var title = '<center><i>' + track.name + '</i></center>' + '<center>by ' + track.artists[0].name + '</center><br><br>';
+
+        $('#selection_div').hide();
+        document.getElementById('selection_div').innerHTML = title;
+        $('#selection_div').append('Album: ' + track.album.name);
+        $('#selection_div').fadeIn();
+    }
+    else {
+        var title = '<center><i>' + d.name + '</i></center>';
+
+        $('#selection_div').hide();
+        document.getElementById('selection_div').innerHTML = title;
+        $('#selection_div').fadeIn();
+    }
+}
+
 function drawGraph(json) {
     $('#graph_div').html("");
     scrollUp();
@@ -85,13 +105,7 @@ function drawGraph(json) {
         .on("dblclick",function(d){
             //var win = window.open("http://google.com/search?q="+d.name)
             //win.focus()
-            if ('id' in d) {
-                var track = getTrack(d.id);
-                //document.getElementById('selection_div').innerHTML = trackName;
-                var title = '<center>' + track.name + '</center><br><br>';
-                document.getElementById('selection_div').innerHTML = title;
-                $('#selection_div').append('Album: ' + track.album.name);
-            }
+            display(d);
         });
 
     node.append("circle")
