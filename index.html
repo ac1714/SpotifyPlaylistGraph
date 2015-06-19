@@ -85,7 +85,13 @@ function drawGraph(json) {
         .on("dblclick",function(d){
             //var win = window.open("http://google.com/search?q="+d.name)
             //win.focus()
-            document.getElementById('selection_div').innerHTML = d.name;
+            if ('id' in d) {
+                var track = getTrack(d.id);
+                //document.getElementById('selection_div').innerHTML = trackName;
+                var title = '<center>' + track.name + '</center><br><br>';
+                document.getElementById('selection_div').innerHTML = title;
+                $('#selection_div').append('Album: ' + track.album.name);
+            }
         });
 
     node.append("circle")

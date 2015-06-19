@@ -64,6 +64,16 @@ function getFullArtist(href) {
     return artist;
 }
 
+function getTrack(id) {
+    jQuery.ajaxSetup({async:false});
+    var track = null;
+    $.get('https://api.spotify.com/v1/tracks/' + id, function(r){
+        track = r;
+    });
+    jQuery.ajaxSetup({async:true});
+    return track;
+}
+
 function getPlaylist(id, token, uid) {
     var playlist = null;
     //console.log(token);
