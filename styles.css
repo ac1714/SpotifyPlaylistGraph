@@ -45,7 +45,6 @@ h3 {
   margin-right: 10%;
   height: 50vh;
   width: 20%;
-  background-color: #b0e0e6;
   font-family: 'Lato';
 }
 
@@ -108,7 +107,7 @@ h3 {
 }
 
 footer {
-  font-family: Arial;
+  font-family: 'Lato';
 }
 
 .link {
