@@ -3,6 +3,7 @@ body
   position: fixed; 
   width: 100%;
   margin: 0px;
+  background-image:url(./img/background.png);
 }
 
 #search_div {
@@ -33,6 +34,7 @@ h3 {
 
 #display_div {
 	height: 80vh;
+  background-image:url(./img/background.png);
 }
 
 #graph_div {
@@ -78,7 +80,7 @@ h3 {
   border: none;
   cursor: pointer;
   height: 40px;
-  width: 170px;
+  width: 190px;
   right: 45%;
   color: #FFFFFF;
   font-family: Arial;
@@ -108,6 +110,7 @@ h3 {
 
 footer {
   font-family: 'Lato';
+  background-image:url(./img/background.png);
 }
 
 .link {

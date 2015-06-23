@@ -14,7 +14,7 @@
 
 <div id="search_div">
 	<h3>Spotify Playlist Graph</h3>
-    <button id="signin" onclick="authorizeUser()">SIGN IN</button>
+    <button id="signin" onclick="authorizeUser()">SIGN IN WITH SPOTIFY</button>
     <div id="submit_div">
         <input id="playlist_input" type="text" name="playlistid">
         <button id="drawgraph" onClick="drawGraph(createJSON(getPlaylist(playlist_input.value, accessToken, user.id)))">VIEW GRAPH</button>
@@ -25,7 +25,7 @@
 <a href="https://www.spotify.com" target="_blank"><img id="spotifylogo" src="img/spotifylogo.png"></a>
 
 <div id="display_div">
-    <div id="selection_div"></div>
+    <div id="selection_div">Double-click a node to find out more information.</div>
     <div id="graph_div"></div>
 </div>
 
@@ -41,6 +41,7 @@ function scrollUp() {
     $('#search_div').animate({height:'10vh'}, 2000);
     $('#submit_div').animate({height:'5vh'}, 2000);
     $('#spotifylogo').animate({bottom: '90vh'}, 2000);
+    $("#selection_div").show();
 }
 
 function display(d) {
@@ -66,7 +67,7 @@ function display(d) {
 function drawGraph(json) {
     $('#graph_div').html("");
     scrollUp();
-    console.log(json);
+    //console.log(json);
     var width = 1280,
     height = 800
     r = 6;
@@ -111,6 +112,14 @@ function drawGraph(json) {
     node.append("circle")
         .attr("r", 8)
         .style("fill", function (d) {
+            //return color(d.group);
+            if ('id' in d) {
+                return d3.rgb("#a1d99b");
+            }
+            else {
+                return d3.rgb("#31a354");
+            }
+
             return color(d.group);
         })
 
@@ -157,7 +166,8 @@ function parseQueryToken() {
 }
 
 function initialise() {
-    $("#submit_div").hide()
+    $("#submit_div").hide();
+    $("#selection_div").hide();
     //$("#signin").hide();
 
     accessToken = parseQueryToken();
