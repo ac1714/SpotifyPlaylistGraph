@@ -8,7 +8,7 @@ body
 
 #search_div {
   position: relative;
-	height: 20vh;
+	height: 50vh;
   background-color: #2EBD59;
   border-bottom: solid #CBD3CD;
 }
@@ -25,11 +25,12 @@ body
     text-align: center;
 }
 
-h3 {
+#title {
   margin-top: 0;
+  padding-top: 20vh;
   text-align: center;
   font-family: 'Lato';
-  font-size: 30px;
+  font-size: 40px;
 }
 
 #display_div {
@@ -39,6 +40,7 @@ h3 {
 
 #graph_div {
   float: left;
+  cursor: default;
 }
 
 #selection_div {

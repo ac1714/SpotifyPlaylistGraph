@@ -13,7 +13,7 @@
 <body>
 
 <div id="search_div">
-	<h3>Spotify Playlist Graph</h3>
+	<h3 id="title">Spotify Playlist Graph</h3>
     <button id="signin" onclick="authorizeUser()">SIGN IN WITH SPOTIFY</button>
     <div id="submit_div">
         <input id="playlist_input" type="text" name="playlistid">
@@ -39,8 +39,10 @@ var user = null;
 
 function scrollUp() {
     $('#search_div').animate({height:'10vh'}, 2000);
+    $('#title').animate({'padding-top':'0', 'font-size':'30px'}, 2000);
     $('#submit_div').animate({height:'5vh'}, 2000);
     $('#spotifylogo').animate({bottom: '90vh'}, 2000);
+    $('#spotifylogo').fadeIn(2000);
     $("#selection_div").show();
 }
 
@@ -168,6 +170,7 @@ function parseQueryToken() {
 function initialise() {
     $("#submit_div").hide();
     $("#selection_div").hide();
+    $('#spotifylogo').hide();
     //$("#signin").hide();
 
     accessToken = parseQueryToken();
